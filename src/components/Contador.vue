@@ -2,10 +2,10 @@
     <div class="contador">
         <h1>Contador</h1>
         <div>
-            <p>Valor atual: {{contagem}}</p>
+            <p>Valor atual: <span :class="contagem < 0 ? 'text-red' : ''">{{contagem}}</span></p>
             <div class="btnDiv">
-                <button type="button" id="btnDec">-</button>
-                <button type="button" id="btnInc">+</button>
+                <button type="button" id="btnDec" @click="decrementar">-</button>
+                <button type="button" id="btnInc" @click="incrementar">+</button>
             </div>
         </div>
     </div>
@@ -16,6 +16,14 @@
         data(){
             return{
                 contagem: 0
+            }
+        },
+        methods: {
+            incrementar(){
+                this.contagem++;
+            },
+            decrementar(){
+                this.contagem--;
             }
         }
     }
@@ -68,5 +76,9 @@
 
     #btnInc{
         background-color: #00FF00;
+    }
+
+    .text-red{
+        color: #FF0000;
     }
 </style>
